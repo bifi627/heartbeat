@@ -1,0 +1,22 @@
+name: Scheduled Ping
+# This workflow is triggered at a scheduled interval of every 30 minutes
+on:
+  workflow_dispatch:
+  schedule:
+    # * is a special character in YAML so you have to quote this string.
+    # /30 denotes that it will run once every 30 minutes
+    - cron: "*/6 * * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+        cache: 'npm'
+    - run: npm run ping -- ${{ secrets.BACKEND_URL }}
+    - run: npm run ping -- ${{ secrets.FRONTEND_URL }}
