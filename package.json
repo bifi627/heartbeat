@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "ping": "tsc & node ./dist/ping.js"
+    "ping": "node ./dist/ping.js"
   },
   "repository": {
     "type": "git",
