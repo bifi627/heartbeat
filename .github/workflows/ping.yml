@@ -18,5 +18,6 @@ jobs:
       with:
         node-version: 16.x
         cache: 'npm'
+    - run: npm ci
     - run: npm run ping -- ${{ secrets.BACKEND_URL }}
     - run: npm run ping -- ${{ secrets.FRONTEND_URL }}
